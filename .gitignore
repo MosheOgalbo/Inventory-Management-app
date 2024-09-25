@@ -1,0 +1,11 @@
+
+client-app/node_modules/
+server-app/node_modules/
+client-app/dist/
+server-app/dist/
+client-app/.env/
+server-app/.env/
+client-app/.next/
+
+.DS_Store
+.env
