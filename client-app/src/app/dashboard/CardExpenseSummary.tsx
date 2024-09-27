@@ -1,4 +1,4 @@
-
+"use client";
 import {
     ExpenseByCategorySummary,
     useGetDashboardMetricsQuery,
@@ -12,7 +12,7 @@ import {
 
   const colors = ["#00C49F", "#0088FE", "#FFBB28"];
 
-  export default async function CardExpenseSummary () {
+  export default  function CardExpenseSummary () {
     const { data: dashboardMetrics, isLoading } = useGetDashboardMetricsQuery();
 
     const expenseSummary = dashboardMetrics?.expenseSummary[0];

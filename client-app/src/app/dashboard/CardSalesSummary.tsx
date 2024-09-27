@@ -1,3 +1,4 @@
+"use client";
 import { useGetDashboardMetricsQuery } from "@/state/api";
 import { TrendingUp } from "lucide-react";
 import React, { useState } from "react";
@@ -11,7 +12,7 @@ import {
   YAxis,
 } from "recharts";
 
-export default async function CardSalesSummary () {
+export default  function CardSalesSummary () {
   const { data, isLoading, isError } = useGetDashboardMetricsQuery();
   const salesData = data?.salesSummary || [];
 

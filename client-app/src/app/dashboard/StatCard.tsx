@@ -15,7 +15,7 @@ type StatCardProps = {
   dateRange: string;
 };
 
-export default async function StatCard({
+export default function StatCard({
   title,
   primaryIcon,
   details,

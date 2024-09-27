@@ -1,3 +1,5 @@
+"use client";
+
 import { useGetDashboardMetricsQuery } from "@/state/api";
 import { TrendingDown, TrendingUp } from "lucide-react";
 import numeral from "numeral";
@@ -11,7 +13,8 @@ import {
   YAxis,
 } from "recharts";
 
-export default async function CardPurchaseSummary  () {
+
+export default  function CardPurchaseSummary  () {
   const { data, isLoading } = useGetDashboardMetricsQuery();
   const purchaseData = data?.purchaseSummary || [];
 
@@ -66,7 +69,7 @@ export default async function CardPurchaseSummary  () {
                 data={purchaseData}
                 margin={{ top: 0, right: 0, left: -50, bottom: 45 }}
               >
-                <XAxis dataKey="date" tick={false} axisLine={false} />
+                <XAxis  dataKey={"date"} tick={false} axisLine={false}  />
                 <YAxis tickLine={false} tick={false} axisLine={false} />
                 <Tooltip
                   formatter={(value: number) => [
