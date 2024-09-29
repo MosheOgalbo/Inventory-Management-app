@@ -1,0 +1,43 @@
+# This docker-compose file is based on example: https://geshan.com.np/blog/2021/12/docker-postgres/
+# You may run it using `docker-compose -f docker-compose.yaml up`
+# If port 5432 is in use run the following: `sudo lsof -i :5432` and `sudo kill -9 <pid>`
+
+version: "3.8"
+services:
+  db:
+    image: postgres:14.4-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - db:/var/lib/postgresql/data
+  #      - ./db/init.sql:/docker-entrypoint-initdb.d/create_tables.sql
+  api:
+    container_name: next-api-inventory-management
+    build:
+      context: .
+      # target: production
+    image: codeforisrael/yozmot_backend
+    depends_on:
+      - db
+    ports:
+      - 8083:8080
+    environment:
+      NODE_ENV: production
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: postgres
+      HTTP_HOST: localhost
+      HTTP_PORT: 8083
+    links:
+      - db
+    volumes:
+      - "./:/src"
+volumes:
+  db:
+    driver: local

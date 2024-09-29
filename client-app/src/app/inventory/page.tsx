@@ -38,7 +38,7 @@ export default function Inventory() {
 
   if (isError || !products) {
     return (
-      <div className="text-center text-red-500 py-4">
+      <div className="text-center text-red-900 py-6">
         Failed to fetch products
       </div>
     );

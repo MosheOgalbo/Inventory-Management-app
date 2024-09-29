@@ -10,7 +10,7 @@ const columns: GridColDef[] = [
   { field: "email", headerName: "Email", width: 200 }
 ];
 
-const Users = () => {
+export default function Users() {
   const { data: users, isError, isLoading } = useGetUsersQuery();
 
   if (isLoading) {
@@ -35,6 +35,4 @@ const Users = () => {
       />
     </div>
   );
-};
-
-export default Users;
+}

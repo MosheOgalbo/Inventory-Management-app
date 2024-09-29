@@ -15,11 +15,9 @@ type CreateProductModalProps = {
   onCreate: (formData: ProductFormData) => void;
 };
 
-export default async function CreateProductModal({
-  isOpen,
-  onClose,
-  onCreate
-}: CreateProductModalProps) {
+export default async function CreateProductModal(
+  props: CreateProductModalProps
+) {
   const [formData, setFormData] = useState({
     productId: v4(),
     name: "",
@@ -41,11 +39,11 @@ export default async function CreateProductModal({
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onCreate(formData);
-    onClose();
+    props.onCreate(formData);
+    props.onClose();
   };
 
-  if (!isOpen) return null;
+  if (!props.isOpen) return null;
 
   const labelCssStyles = "block text-sm font-medium text-gray-700";
   const inputCssStyles =
@@ -120,7 +118,7 @@ export default async function CreateProductModal({
             Create
           </button>
           <button
-            onClick={onClose}
+            onClick={props.onClose}
             type="button"
             className="ml-2 px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
           >

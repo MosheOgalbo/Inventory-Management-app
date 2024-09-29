@@ -15,12 +15,7 @@ type StatCardProps = {
   dateRange: string;
 };
 
-export default function StatCard({
-  title,
-  primaryIcon,
-  details,
-  dateRange
-}: StatCardProps) {
+export default function StatCard(props: StatCardProps) {
   const formatPercentage = (value: number) => {
     const signal = value >= 0 ? "+" : "";
     return `${signal}${value.toFixed()}%`;
@@ -35,10 +30,10 @@ export default function StatCard({
       <div>
         <div className="flex justify-between items-center mb-2 px-5 pt-4">
           <h2 className="font-semibold text-lg text-gray-700">
-            {title}
+            {props.title}
           </h2>
           <span className="text-xs text-gray-400">
-            {dateRange}
+            {props.dateRange}
           </span>
         </div>
         <hr />
@@ -47,10 +42,10 @@ export default function StatCard({
       {/* BODY */}
       <div className="flex mb-6 items-center justify-around gap-4 px-5">
         <div className="rounded-full p-5 bg-blue-50 border-sky-300 border-[1px]">
-          {primaryIcon}
+          {props.primaryIcon}
         </div>
         <div className="flex-1">
-          {details.map((detail, index) =>
+          {props.details.map((detail, index) =>
             <React.Fragment key={index}>
               <div className="flex items-center justify-between my-4">
                 <span className="text-gray-500">
@@ -75,7 +70,7 @@ export default function StatCard({
                   </span>
                 </div>
               </div>
-              {index < details.length - 1 && <hr />}
+              {index < props.details.length - 1 && <hr />}
             </React.Fragment>
           )}
         </div>
