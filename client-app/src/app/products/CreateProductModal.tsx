@@ -15,9 +15,7 @@ type CreateProductModalProps = {
   onCreate: (formData: ProductFormData) => void;
 };
 
-export default async function CreateProductModal(
-  props: CreateProductModalProps
-) {
+export default function CreateProductModal(props: CreateProductModalProps) {
   const [formData, setFormData] = useState({
     productId: v4(),
     name: "",
